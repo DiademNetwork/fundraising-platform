@@ -1,0 +1,17 @@
+{
+  "name": "dnetwork",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "browserify tokenEconomyModel.js --standalone economy > lib/economy.bundle.js",
+    "test": "node src/test.js | faucet"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "^4.9.1"
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./Chart.bundle.min.js"></script>
+    <script src="./economy.bundle.js"></script>
+    <script>
+      window.onload = function() {
+        const ctx = document.getElementById("chart").getContext('2d')
+        const ctx2 = document.getElementById("chart2").getContext('2d')
+        const limitShown = 10
+
+        const data = economy.randomInvestments(1000, 100, 1000)
+        const talentName = 'Alex'
+        const investorsFee = 0.1
+
+        const { diademsDatasets, tokensDatasets } = economy.fullDatasets(talentName, investorsFee, data)
+
+        const labels = economy.labels(data)
+        const styledDiademsDatasets = economy.styleDatasets(diademsDatasets.slice(0, limitShown))
+        const styledTokensDatasets = economy.styleDatasets(tokensDatasets.slice(0, limitShown))
+
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: styledDiademsDatasets
+          }
+        });
+
+        var myChart2 = new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: styledTokensDatasets
+          }
+        });
+      }
+    </script>
+</head>
+<body>
+<div class="chart-container" style="position: relative; height:100%; width:100%">
+    <canvas id="chart"></canvas>
+</div>
+<div class="chart-container" style="position: relative; height:100%; width:100%">
+    <canvas id="chart2"></canvas>
+</div>
+</body>
+</html>
