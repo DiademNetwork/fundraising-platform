@@ -2,5 +2,8 @@
 
 #### The main advantage is predictable profit for every sponsor of creator
 
+#### Diadems:
 ![Diadems](diadems.png)
+
+#### Personal token:
 ![Tokens](tokens.png)
