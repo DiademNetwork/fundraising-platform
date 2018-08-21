@@ -9,17 +9,23 @@
       window.onload = function() {
         const ctx = document.getElementById("chart").getContext('2d')
         const ctx2 = document.getElementById("chart2").getContext('2d')
-        const limitShown = 10
 
-        const data = economy.randomInvestments(1000, 100, 1000)
-        const talentName = 'Alex'
+        const firstShownInvestor = 0
+        const lastShownInvestor = 10
+
+        const numberOfInvestors = 1000
+        const minInvestmentValue = 100
+        const maxInvestmentValue = 1000
         const investorsFee = 0.1
+        const talentName = 'Alex'
+
+        const data = economy.randomInvestments(numberOfInvestors, minInvestmentValue, maxInvestmentValue)
 
         const { diademsDatasets, tokensDatasets } = economy.fullDatasets(talentName, investorsFee, data)
 
         const labels = economy.labels(data)
-        const styledDiademsDatasets = economy.styleDatasets(diademsDatasets.slice(0, limitShown))
-        const styledTokensDatasets = economy.styleDatasets(tokensDatasets.slice(0, limitShown))
+        const styledDiademsDatasets = economy.styleDatasets(diademsDatasets.slice(firstShownInvestor, lastShownInvestor))
+        const styledTokensDatasets = economy.styleDatasets(tokensDatasets.slice(firstShownInvestor, lastShownInvestor))
 
         var myChart = new Chart(ctx, {
           type: 'line',

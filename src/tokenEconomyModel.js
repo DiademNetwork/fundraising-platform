@@ -105,7 +105,6 @@ const calculate = (person, investorsFee, investments) => {
     const {name, amount} = investments[i]
 
     let personalTokensReward = amount
-    let personalTokensTotalIncrease = personalTokensReward
 
     if (i === 0) {
       diadems[person] += amount
@@ -129,7 +128,6 @@ const calculate = (person, investorsFee, investments) => {
 
           diadems[investorName] += investorIncreaseDiadems
           personalTokens[investorName] += investorIncreaseTokens
-          personalTokensTotalIncrease += investorIncreaseTokens
         }
       })
 
@@ -137,7 +135,7 @@ const calculate = (person, investorsFee, investments) => {
       diadems[name] -= amount
     }
 
-    personalTokensTotal += personalTokensTotalIncrease
+    personalTokensTotal += personalTokensReward
     personalTokens[name] += ( personalTokensReward / 2 )
   }
 
